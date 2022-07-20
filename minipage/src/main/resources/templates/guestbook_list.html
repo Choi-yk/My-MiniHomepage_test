@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<title>방명록</title>
+</head>
+<body>
+	<table class="table" id="guestTable">
+		<thead>
+			<th>작성자</th>
+			<th>작성날짜</th>
+			<th>내용</th>
+		</thead>
+		<tbody>
+			<tr th:each="guestbook : ${guestbookList}">
+				<td th:text="${guestbook.guestName}"/>
+				<td th:text="${guestbook.guestDate}"/>
+				<td th:text="${guestbook.guestContent}"/>
+			</tr>
+		</tbody>
+	</table>
+	
+	<form th:action="@{|/guestbook/create|}" method="post" th:object="${GuestbookForm}">
+		<textarea rows="1" cols="20" placeholder="방문자 닉네임"  style="resize:none"></textarea><br>
+		<textarea rows="7" cols="50" placeholder="어서오세요. 방명록을 작성해주세요 :)"  style="resize:none"></textarea>
+		<input type="submit" value="등록">
+	</form>
+
+
+</body>
+</html>
