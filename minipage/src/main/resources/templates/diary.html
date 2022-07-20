@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<title>다이어리</title>
+</head>
+<body>
+	<a href="#" class="btn btn-secondary">글쓰기</a>
+	<div>
+		<table>
+			<tbody>
+				<tr th:each="diary, loop: ${diaryList}">
+					<td>
+						<b><span class="text-primary ms-2"
+							th:text="${#temporals.format(diary.writeDate, 'yyyy-MM-dd E HH:mm')}">
+						</span></b>
+					</td>
+					<td th:text="${diary.content}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

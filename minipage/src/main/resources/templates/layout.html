@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="/bootstrap.min.js" defer></script>
+  </head>
+  <body>
+    <div class="container-md homeWrapper">
+      <div class="dotWrapper">
+        <div class="container" id="container_wrap">
+          <div class="btn-group btn-group-sm LoginSigninBtn">
+            <a href="#" class="btn btn-primary active" aria-current="page"
+              >로그인</a
+            >
+            <a href="#" class="btn btn-primary">회원가입</a>
+          </div>
+
+          <div class="profileWrap">aboutme
+          <th:block layout:fragment="profileContent"></th:block><!-- 자기소개 -->
+          </div>
+          <div class="tab-content" id="nav-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="nav-home"
+              role="tabpanel"
+              aria-labelledby="nav-home-tab"
+              tabindex="0"
+            >
+          <th:block layout:fragment="homeContent"></th:block><!-- home -->
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-profile"
+              role="tabpanel"
+              aria-labelledby="nav-profile-tab"
+              tabindex="0"
+            >
+              <th:block layout:fragment="diaryContent"></th:block><!-- 다이어리 -->
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-contact"
+              role="tabpanel"
+              aria-labelledby="nav-contact-tab"
+              tabindex="0"
+            >
+                 <th:block layout:fragment="VisitorContent"></th:block><!-- 방명록 -->
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-disabled"
+              role="tabpanel"
+              aria-labelledby="nav-disabled-tab"
+              tabindex="0"
+            >
+              === disabled===
+            </div>
+          </div>
+
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-home"
+                type="button"
+                role="tab"
+                aria-controls="nav-home"
+                aria-selected="true"
+              >
+                홈
+              </button>
+              <button
+                class="nav-link"
+                id="nav-profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-profile"
+                type="button"
+                role="tab"
+                aria-controls="nav-profile"
+                aria-selected="false"
+              >
+                다이어리
+              </button>
+              <button
+                class="nav-link"
+                id="nav-contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-contact"
+                type="button"
+                role="tab"
+                aria-controls="nav-contact"
+                aria-selected="false"
+              >
+                방명록
+              </button>
+              <button
+                class="nav-link"
+                id="nav-disabled-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-disabled"
+                type="button"
+                role="tab"
+                aria-controls="nav-disabled"
+                aria-selected="false"
+                disabled
+              >
+                Disabled
+              </button>
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic outlined example"
+              ></div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
