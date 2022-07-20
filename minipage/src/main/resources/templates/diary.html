@@ -7,15 +7,15 @@
 <title>다이어리</title>
 </head>
 <body>
-	<a href="#" class="btn btn-secondary">글쓰기</a>
+	<a th:href="@{/diary/create}" class="btn btn-secondary">글쓰기</a>
 	<div>
 		<table>
 			<tbody>
 				<tr th:each="diary, loop: ${diaryList}">
 					<td>
-						<b><span class="text-primary ms-2"
+						<span class="text-primary ms-2 fw-bold"
 							th:text="${#temporals.format(diary.writeDate, 'yyyy-MM-dd E HH:mm')}">
-						</span></b>
+						</span>
 					</td>
 					<td th:text="${diary.content}"></td>
 				</tr>

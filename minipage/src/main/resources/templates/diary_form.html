@@ -1,0 +1,41 @@
+<!--  
+<html layout:decorate="~{layout}">
+<div layout:fragment="diaryContent">
+	<form th:action="@{/diary/create}" method="post">
+		 <div class="mb-3">
+		 	<label for="content" class="form-label">글 쓰기</label>
+		 	<input type="text" name="content" class="form-control">
+		 </div>
+		 <input type="submit" value="저장하기" class="btn btn-secondary my-2">
+	</form>
+</div>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<title>다이어리</title>
+</head>
+<body>
+	<div class="container">
+		<form th:action="@{/diary/create}" th:object="${diaryForm}" method="post">
+			<!-- 경고문 -->
+			<div class="alert alert-primary" role="alert"
+				th:if="${#fields.hasAnyErrors()}">
+				<div th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
+			</div>
+			 
+			 <!-- 내용 입력란 -->
+			 <div class="mb-3">
+			 	<label for="content" class="form-label"></label>
+			 	<textarea name="content" class="form-control" rows="10"></textarea>
+			 </div>
+			 
+			 <input type="submit" value="등록" class="btn btn-secondary my-2">
+		</form>
+	</div>
+</body>
+</html>

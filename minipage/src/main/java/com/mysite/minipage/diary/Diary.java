@@ -1,6 +1,6 @@
 package com.mysite.minipage.diary;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ public class Diary {
 	private Integer id; 
 	
 	@CreatedDate
-	private LocalDate writeDate;
+	private LocalDateTime writeDate;
 	
 	@Column(length = 2000)
 	private String content;

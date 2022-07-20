@@ -1,6 +1,6 @@
 package com.mysite.minipage.diary;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class DiaryService {
 	public void create(String content) {
 		Diary diary = new Diary();
 		diary.setContent(content);
-		diary.setWriteDate(LocalDate.now());
+		diary.setWriteDate(LocalDateTime.now());
 		
 		this.diaryRepository.save(diary);
 	}
