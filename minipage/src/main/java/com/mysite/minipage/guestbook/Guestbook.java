@@ -33,5 +33,4 @@ public class Guestbook {
 	//어노테이션 없어도 자동으로 컬럼으로 만들어짐
 	private LocalDate guestDate;
 	
-	
 }

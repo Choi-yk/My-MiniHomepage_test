@@ -42,5 +42,4 @@ public class GuestbookController {
 		return "guestbook_list";
 	}
 	
-	
 }
