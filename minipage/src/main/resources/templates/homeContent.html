@@ -1,0 +1,18 @@
+<div th:fragment="HomeContent">
+
+	
+<div>Updated News</div><hr/>	
+
+	<div sec:authorize="isAuthenticated()">
+		<img src="/img/dandelions.jpg" style="width:40%;margin:0 1em 1em 1em;display:inline-block;" alt="사진"/>
+		</div>
+	
+			<div sec:authorize="isAnonymous()" aria-current="page">
+		
+<img src="/img/dandelionsinwater.jpg" style="width:40%;margin:0 1em 1em 1em;display:inline-block;" alt="사진"/>
+
+		
+		</div>
+	
+<div>Updated News</div><hr/>	
+</div>

@@ -12,5 +12,7 @@ public enum HompiUserRole {
 	HompiUserRole(String value) {	
 		this.value = value;
 	}
+	
+	
 
 }

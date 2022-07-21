@@ -51,7 +51,7 @@ body {
 }
 .formLayOutWrap {
   width: 20%;
-  height: 450px;
+  height: 80%;
   border: 1px solid silver;
   border-radius: 9px;
   float: left;
@@ -84,4 +84,60 @@ body {
   list-style: none;
   flex-direction: column;
   width: 10em;
+}
+.imageWrap {
+    width: 12em;
+    height: 12em;
+    background-color: grey;
+    text-align: center;
+    padding-top: 46%;
+    border-radius: 9px;
+    margin:1em auto 0 auto;
+}
+.profileTextWrap {
+	width: 13em;
+	height: 10em;
+
+	text-align: justify;
+	padding: 1em;
+	
+}
+.btn_position {
+    left: 5vw;
+    /* margin-left: 1em; */
+    position: fixed;
+    top: 75%;
+}
+#profile {
+	height: 23vh;
+}
+.signup_wrap {
+	display: inline-block;
+	width: 45%;
+	margin: 1em;
+}
+
+.nav {
+	clear: both;
+	display: inline-flex;
+	flex-wrap: wrap;
+	/* padding-left: 65%; */
+	margin-bottom: 0;
+	list-style: none;
+	flex-direction: column;
+	width: 10em;
+}
+#nav-tabContent {
+	max-width: 60%;
+	height: 80%;
+	border: 1px solid silver;
+	border-radius: 9px 0 0 9px;
+	float: left;
+	margin-left: 1em;
+	background-color: white;
+	padding: 1em;
+}
+#nav-tabContent {
+	display: inline-block;
+	width: 60%;
 }

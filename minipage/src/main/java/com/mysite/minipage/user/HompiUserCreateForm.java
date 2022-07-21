@@ -1,5 +1,6 @@
 package com.mysite.minipage.user;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -12,16 +13,19 @@ import lombok.Setter;
 public class HompiUserCreateForm {
 
 	@Size(min=3, max=25)
-	@NotEmpty(message="ì‚¬ìš©ì ì•„ì´ë””ëŠ” í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
+	@NotEmpty(message="»ç¿ëÀÚ ¾ÆÀÌµğ´Â ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
 	private String username;
 	
-	@NotEmpty(message="ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
-	private String password1;	//ë¹„ë°€ë²ˆí˜¸
+	@NotEmpty(message="ºñ¹Ğ¹øÈ£´Â ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
+	private String password1;	//ºñ¹Ğ¹øÈ£
 	
-	@NotEmpty(message="ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì€ í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
-	private String password2;	//ë¹„ë°€ë²ˆí˜¸í™•ì¸
+	@NotEmpty(message="ºñ¹Ğ¹øÈ£ È®ÀÎÀº ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
+	private String password2;	//ºñ¹Ğ¹øÈ£È®ÀÎ
 
-	@NotEmpty(message="ì´ë©”ì¼ì€ í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
+	@NotEmpty(message="ÀÌ¸ŞÀÏÀº ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
 	@Email
 	private String email;
+	
+	@Column(columnDefinition = "TEXT")		//°Ô½ÃÆÇ È¨ÆäÀÌÁö¿¡ µî·ÏµÉ ÀÚ±â¼Ò°³
+	private String profile;
 }

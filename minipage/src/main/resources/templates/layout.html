@@ -15,15 +15,13 @@
     <div class="container-md homeWrapper">
       <div class="dotWrapper">
         <div class="container" id="container_wrap">
-          <div class="btn-group btn-group-sm LoginSigninBtn">
-            <a href="#" class="btn btn-primary active" aria-current="page"
-              >로그인</a
-            >
-            <a href="#" class="btn btn-primary">회원가입</a>
-          </div>
+  <div th:replace="LogSignbtn::LogSignbtnFragment"></div>
 
-          <div class="profileWrap">aboutme
-          <th:block layout:fragment="profileContent"></th:block><!-- 자기소개 -->
+           <div class="profileWrap">
+         About me
+         <div class="imageWrap">이미지 </div>
+					
+					<div th:replace="profile::profileContent"></div>
           </div>
           <div class="tab-content" id="nav-tabContent" style="overflow: auto;">
             <div
@@ -33,7 +31,7 @@
               aria-labelledby="nav-home-tab"
               tabindex="0"
             >
-          <th:block layout:fragment="homeContent"></th:block><!-- home -->
+         	<div th:replace="homeContent::HomeContent"></div>
             </div>
             <div
               class="tab-pane fade"
@@ -41,7 +39,7 @@
               role="tabpanel"
               aria-labelledby="nav-profile-tab"
               tabindex="0">
-              <th:block layout:fragment="diaryContent"></th:block>
+             <div th:replace="diaryContent::diaryContent"></div>
             </div><!-- 다이어리 -->
             <div
               class="tab-pane fade"
@@ -50,20 +48,14 @@
               aria-labelledby="nav-contact-tab"
               tabindex="0"
             >
-                 <th:block layout:fragment="VisitorContent"></th:block><!-- 방명록 -->
+            <!--     <div th:replace="guestbookContent::GuestBookContent"></div> 방명록 
+              <div th:replace="guestbook_list::VisitorContent"></div> -->
             </div>
-            <div
-              class="tab-pane fade"
-              id="nav-disabled"
-              role="tabpanel"
-              aria-labelledby="nav-disabled-tab"
-              tabindex="0"
-            >
-              === disabled===
-            </div>
+           
           </div>
 
-          <nav>
+         
+        </div> <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <button
                 class="nav-link active"
@@ -101,19 +93,7 @@
               >
                 방명록
               </button>
-              <button
-                class="nav-link"
-                id="nav-disabled-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#nav-disabled"
-                type="button"
-                role="tab"
-                aria-controls="nav-disabled"
-                aria-selected="false"
-                disabled
-              >
-                Disabled
-              </button>
+        
               <div
                 class="btn-group"
                 role="group"
@@ -121,7 +101,6 @@
               ></div>
             </div>
           </nav>
-        </div>
       </div>
     </div>
     

@@ -25,25 +25,28 @@ public class SecurityConfig {
 
 	private final HompiUserSecurityService hompiUserSecurityService;
 	
-	//Îπà Îì±Î°ùÌïòÍ∏∞
+	//∫Û µÓ∑œ«œ±‚
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		
 		http.authorizeRequests().antMatchers("/**").permitAll()
 		.and()
-		.csrf().ignoringAntMatchers("/h2-console/**")
+			.csrf().ignoringAntMatchers("/h2-console/**")
 		.and()
-		.headers() //X-Frame-Options Ìó§ÎçîÏùò Í∞íÏúºÎ°ú sameoriginÏùÑ ÏÑ§Ï†ï
-		.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+			.headers() //X-Frame-Options «Ï¥ı¿« ∞™¿∏∑Œ sameorigin¿ª º≥¡§
+			.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
 		.and()
-		.formLogin()
-		.loginPage("/hompiUser/login")
-		.defaultSuccessUrl("/")
+			.formLogin()
+			.loginPage("/hompiUser/login")
+			.defaultSuccessUrl("/")
+			
 		.and()
-		.logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/hompiUser/logout"))
-		.logoutSuccessUrl("/")
-		.invalidateHttpSession(true);
+			.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/hompiUser/logout"))
+			.logoutSuccessUrl("/")
+			.invalidateHttpSession(true);
+		
+		
 		
 		return http.build();
 		
