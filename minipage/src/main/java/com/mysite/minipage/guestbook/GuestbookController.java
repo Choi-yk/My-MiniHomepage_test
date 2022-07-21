@@ -2,8 +2,13 @@ package com.mysite.minipage.guestbook;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,25 +26,46 @@ public class GuestbookController {
 	private final GuestbookRepository guestbookRepository;
 	
 	//전체 글 조회하기
+//	@RequestMapping("/list")
+//	public String list(Model model) {
+//		List<Guestbook> guestbookList = this.guestbookRepository.findAll();
+//		model.addAttribute("guestbookList",guestbookList);
+//		return "guestbook_list";
+//	}
+	
+	//페이징 처리 전체 글 조회하기
 	@RequestMapping("/list")
-	public String list(Model model) {
-		List<Guestbook> guestbookList = this.guestbookRepository.findAll();
-		model.addAttribute("guestbookList",guestbookList);
-		return "guestbook_list";
+	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+		 Page<Guestbook> paging = this.guestbookService.getList(page);
+		 model.addAttribute("paging", paging);
+	     return "guestbook_list";
 	}
 	
-	//방명록 등록 버튼
-	@PostMapping("/create/{guestId}")
-	public String createGuestbook(Model model,@PathVariable("guestId") Integer guestId, @RequestParam String guestContent) {
-		// model은 리턴값 만들기 위해
-		// @PathVariable("guestId") Integer guestId는 Mapping에 있는 {guestId}를 그대로 받아오기 위해 설정한 것
-		// @RequestParam String guestContent는 답변을 단 내용(guestContent)부분 가져오기
+	//방명록 등록
+//	@GetMapping("/create")
+//	public String createGuestbook(GuestbookForm guestbookForm) {
+//		return "guestbook_form";
+//	}
+	
+	@PostMapping("/create")
+	public String createGuestbook(@Valid GuestbookForm guestbookForm, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "redirect:/guestbook/list";
+		}
 		
+		this.guestbookService.create(guestbookForm.getGuestContent(),guestbookForm.getGuestName());
+		
+		return "redirect:/guestbook/list";
+	}
+	
+	//삭제하기
+	@GetMapping("/delete/{guestId}")
+	public String deleteGuestbook(@PathVariable("guestId") Integer guestId) {
 		Guestbook guestbook = this.guestbookService.getGuestbook(guestId);
 		
-		this.guestbookService.create(guestbook,guestContent);		
+		this.guestbookService.delete(guestbook);
 		
-		return "guestbook_list";
+		return "redirect:/guestbook/list";
 	}
 	
 }

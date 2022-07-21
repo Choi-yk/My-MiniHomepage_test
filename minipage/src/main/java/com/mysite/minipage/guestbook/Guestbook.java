@@ -1,6 +1,7 @@
 package com.mysite.minipage.guestbook;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +32,6 @@ public class Guestbook {
 	private String imageFile;
 	
 	//어노테이션 없어도 자동으로 컬럼으로 만들어짐
-	private LocalDate guestDate;
+	private LocalDateTime guestDate;
 	
 }

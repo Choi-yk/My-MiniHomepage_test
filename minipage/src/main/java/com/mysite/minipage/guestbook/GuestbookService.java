@@ -1,10 +1,14 @@
 package com.mysite.minipage.guestbook;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mysite.minipage.DataNotFoundException;
@@ -19,32 +23,44 @@ public class GuestbookService {
 	//Repository(DAO)와 연결시키기
 	private final GuestbookRepository guestbookRepository;
 	
-	public List<Guestbook> getList(){
-		return this.guestbookRepository.findAll();
+//	//전체조회
+//	public List<Guestbook> getList(){
+//		return this.guestbookRepository.findAll();
+//	}
+	
+	//페이징 전체조회
+	public Page<Guestbook> getList(int page){
+		Pageable pageable = PageRequest.of(page, 2);
+		return this.guestbookRepository.findAll(pageable);
 	}
+
 	
 	//방명록 등록 저장하기
-	public void create(Guestbook guestbook, String guestContent) {
-		Guestbook guestbooks = new Guestbook();
+	public void create(String guestContent, String guestName) {
+		Guestbook guestbook = new Guestbook();
 		
-		guestbooks.setGuestDate(LocalDate.now());
-		guestbooks.setGuestContent(guestContent);
+		guestbook.setGuestDate(LocalDateTime.now());
+		guestbook.setGuestContent(guestContent);
+		guestbook.setGuestName(guestName);
 		
-		this.guestbookRepository.save(guestbooks);	//저장소에 save
+		this.guestbookRepository.save(guestbook);	//저장소에 save
 	}
-	
-
 	
 	public Guestbook getGuestbook(Integer guestId) {
-		Optional<Guestbook> guestbook = this.guestbookRepository.findById(guestId);
+		Optional<Guestbook> guestbook = this.guestbookRepository.findById(guestId);//db안에서 선택한 id값
 		if(guestbook.isPresent()) {
-			return guestbook.get();
+			return guestbook.get();//있으면 있는 id값 return
 		}
 		else {
-			throw new DataNotFoundException("guestbook not found");
+			throw new DataNotFoundException("guestbook not found");//데이터가 없을 경우 예외
 		}
 		
 	}
-
+	
+	//삭제
+	public void delete(Guestbook guestbook) {
+		this.guestbookRepository.delete(guestbook);
+	}
+	
 	
 }
