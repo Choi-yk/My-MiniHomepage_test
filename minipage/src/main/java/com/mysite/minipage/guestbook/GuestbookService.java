@@ -2,8 +2,10 @@ package com.mysite.minipage.guestbook;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Sort;
 
 import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.data.domain.Page;
@@ -30,7 +32,9 @@ public class GuestbookService {
 	
 	//페이징 전체조회
 	public Page<Guestbook> getList(int page){
-		Pageable pageable = PageRequest.of(page, 2);
+		List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("guestDate"));
+		Pageable pageable = PageRequest.of(page, 2,Sort.by(sorts));
 		return this.guestbookRepository.findAll(pageable);
 	}
 
