@@ -1,11 +1,9 @@
-
-<!-- 다이어리 리스트 페이지 -->
-
+<!-- 메인화면 페이지의 다이어리 부분 -->
 <html layout:decorate="~{diary_layout}">
 <div layout:fragment="content" class="container my-3">
 <div th:fragment="diaryContent">
 
-						<h2 style="text-align: center; margin: 1em 0;">My 다이어리</h2>
+						<h5 style="margin: 1em 0;">달력</h5>
 						
 		<table class="card my-3">
 			<tr class="card-body" style="font-size: 18px">
@@ -17,40 +15,9 @@
 				25 &nbsp;&nbsp;26 27 28 29 <span class="saturday"> 30 </span><span class="sunday"> 31 </span></td>
 			</tr>
 		</table>
-		<!--  -->
-		<div class="row my-3">
-			<div class="col-6">
-				<a th:href="@{/diary/list/create}" class="btn btn-secondary">
-					글쓰기
-				</a>
-			</div>
-</div>
+	
 		
-		<div class="card my-3" th:each="diary, loop: ${paging}">
-			<!-- 페이징처리 시작 -->
-		    <div th:if="${!paging.isEmpty()}">
-		        <ul class="pagination justify-content-center">
-		            <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
-		                <a class="page-link"
-		                    th:href="@{|?page=${paging.number-1}|}">
-		                    <span>이전</span>
-		                </a>
-		            </li>
-		            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
-		                th:if="${page >= paging.number-5 and page <= paging.number+5}"
-		                th:classappend="${page == paging.number} ? 'active'" 
-		                class="page-item">
-		                <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
-		            </li>
-		            <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-		                <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
-		                    <span>다음</span>
-		                </a>
-		            </li>
-		        </ul>
-		    </div>
-		    <!-- 페이징처리 끝 -->
-		    
+		<div class="card my-3" th:each="diary, loop: ${diaryList}">
 			<div class="card-body">
 				<div class="card-text" style="white-space: pre-line; color: #3a81a3;"
 				 th:text="${#temporals.format(diary.writeDate, 'yyyy-MM-dd E HH:mm')}">
@@ -61,21 +28,16 @@
 			</div>
 			<div class="card-footer">
 				<!-- 수정 버튼 -->
-				<a th:href="@{|/diary/modify/${diary.id}|}"
-				 class="btn btn-sm btn-outline-secondary"
-				 sec:authorize="isAuthenticated()"
-				 
-				 th:text="수정"></a>
+				<a th:href="@{|/diary/modify/${diary.id}|}" class="btn btn-sm btn-outline-secondary"
+                th:text="수정"></a>
                 
 				<!-- 삭제 버튼 -->
 				<a href="javascript:void(0);" th:data-uri="@{|/diary/delete/${diary.id}|}"
                 class="delete btn btn-sm btn-outline-secondary"
-                sec:authorize="isAuthenticated()"
-				
                 th:text="삭제"></a>
 			</div>
-			
 		</div>
+	
 	
 	<script type='text/javascript' defer>
 		const delete_elements = document.getElementsByClassName("delete");
@@ -87,7 +49,6 @@
 		    });
 		});
 	</script>
-	
-
+</div>
 </div>
 </html>

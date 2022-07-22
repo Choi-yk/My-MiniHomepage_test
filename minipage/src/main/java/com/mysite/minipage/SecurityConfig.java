@@ -25,7 +25,7 @@ public class SecurityConfig {
 
 	private final HompiUserSecurityService hompiUserSecurityService;
 	
-	//ºó µî·ÏÇÏ±â
+	//ë¹ˆ ë“±ë¡í•˜ê¸°
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		
@@ -33,7 +33,7 @@ public class SecurityConfig {
 		.and()
 			.csrf().ignoringAntMatchers("/h2-console/**")
 		.and()
-			.headers() //X-Frame-Options Çì´õÀÇ °ªÀ¸·Î sameoriginÀ» ¼³Á¤
+			.headers() //X-Frame-Options í—¤ë”ì˜ ê°’ìœ¼ë¡œ sameoriginì„ ì„¤ì •
 			.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
 		.and()
 			.formLogin()

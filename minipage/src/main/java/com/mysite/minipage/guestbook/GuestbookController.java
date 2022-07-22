@@ -38,14 +38,16 @@ public class GuestbookController {
 	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
 		 Page<Guestbook> paging = this.guestbookService.getList(page);
 		 model.addAttribute("paging", paging);
-	     return "guestbook_list";
+//	     return "guestbook_list";
+//	     return "guestbook_list2";
+	     return "guestbook_list3";
 	}
 	
 	//방명록 등록
-//	@GetMapping("/create")
-//	public String createGuestbook(GuestbookForm guestbookForm) {
-//		return "guestbook_form";
-//	}
+	@GetMapping("/create")
+	public String createGuestbook(GuestbookForm guestbookForm) {
+		return "guestbook_form";
+	}
 	
 	@PostMapping("/create")
 	public String createGuestbook(@Valid GuestbookForm guestbookForm, BindingResult bindingResult) {

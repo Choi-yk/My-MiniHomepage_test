@@ -1,3 +1,4 @@
+<!-- 로그인 사인업 페이지 공통 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,20 @@
 <link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <script src="/bootstrap.min.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<link rel="stylesheet" type="text/css" href="/font.css" />
+<link rel="stylesheet" type="text/css" href="/diary.css" />
+<link rel="stylesheet" type="text/css" href="/guestbook.css" />
 </head>
  <body>
     <div class="container-md homeWrapper">
       <div class="dotWrapper">
         <div class="container" id="container_wrap">
-        	<div th:replace="LogSignbtn::LogSignbtnFragment"></div> 
+        	<span><h1><a th:href="@{/}" class="text-dark">나의 미니홈피(>'-'<)</a></h1></span>
+        	<div th:replace="LogSignbtn::LogSignbtnFragment" style="display:inline"></div> 
           <div class="formLayOutWrap" style="width: 97%">
-  <th:block layout:fragment="content"></th:block><!-- 자기소개 -->
+  <th:block layout:fragment="content" ></th:block>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String root() {
-		//questionList 재요청하기
+		
 		 return "redirect:/hompiUser/index";
 		
 	}

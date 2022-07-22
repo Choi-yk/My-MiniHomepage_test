@@ -26,7 +26,7 @@ public class HompiUser {
 	@Column(unique = true)				
 	private String email;
 	
-	@Column(columnDefinition = "TEXT")		//°Ô½ÃÆÇ È¨ÆäÀÌÁö¿¡ µî·ÏµÉ ÀÚ±â¼Ò°³
+	@Column(columnDefinition = "TEXT")		//ê²Œì‹œíŒ í™ˆí˜ì´ì§€ì— ë“±ë¡ë  ìê¸°ì†Œê°œ
 	private String profile;
 	
 }

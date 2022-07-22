@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HompiUserRepository extends JpaRepository<HompiUser, Long>{
 	Optional<HompiUser> findByusername(String username);
-//	Optional<HompiUser> findById(Integer id);
 }
