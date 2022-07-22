@@ -23,7 +23,7 @@ public class HompiUserSecurityService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<HompiUser> _hompiUser = this.hompiUserRepository.findByusername(username);
 		if(_hompiUser.isEmpty()) {
-			throw new UsernameNotFoundException("¹Ì´ÏÈ¨ÇÇ ÀÌ¿ëÀÚ°¡ ¾Æ´Õ´Ï´Ù");
+			throw new UsernameNotFoundException("ë¯¸ë‹ˆí™ˆí”¼ ì´ìš©ìê°€ ì•„ë‹™ë‹ˆë‹¤");
 		}
 		HompiUser hompiUser = _hompiUser.get();
 		List<GrantedAuthority> authorities = new ArrayList();

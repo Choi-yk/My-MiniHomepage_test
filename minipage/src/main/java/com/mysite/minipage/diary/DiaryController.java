@@ -37,12 +37,14 @@ public class DiaryController {
 	@GetMapping("/create")
 	public String diaryCreate(DiaryForm diaryForm) {
 		return "diary_form";
+
 	}
 	
 	@PostMapping("/create")
 	public String diaryCreate(@Valid DiaryForm diaryForm, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "diary_form";
+
 		}
 		this.diaryService.create(diaryForm.getContent());
 		
@@ -57,13 +59,16 @@ public class DiaryController {
 		diaryForm.setContent(diary.getContent());
 		
 		return "diary_form";
+
 	 }
 	
+
 	@PostMapping("/modify/{id}")
 	public String diaryModify(@Valid DiaryForm diaryForm, BindingResult bindingResult,
 			@PathVariable("id") Integer id)
 	{
 		if(bindingResult.hasErrors()) {
+
 			return "diary_form";
 		}
 		
@@ -71,7 +76,7 @@ public class DiaryController {
 		
 		this.diaryService.modify(diary, diaryForm.getContent());
 		
-		return String.format("redirect:/diary/list/%s", id);
+		return String.format("redirect:/diary/list", id);
 	}
 	
 	/* 글 삭제 */

@@ -1,5 +1,6 @@
+<!-- 뢰원 가입 내용 -->
 <html layout:decorate = "~{form_layout}">
-  <div layout:fragment = "content" class="container my-3">
+  <div layout:fragment = "content" class="container my-3" style="background-color:white">
 <h3 style="text-align: center">회원가입</h3>
 <form th:action="@{/hompiUser/signup}" th:object="${hompiUserCreateForm}" method="post">
 
@@ -29,9 +30,9 @@
         <div class="mb-3 signup_textArea">
             <label for="profile" class="form-label">간단하게 나를 소개한다면?</label>
             <input type="text" th:field="*{profile}"  class="form-control">
+        </div><button type="submit" class="btn btn-secondary btn_position" style="width:7em; ">회원가입</button>
         </div>
-        </div>
-        <button type="submit" class="btn btn-secondary btn_position">회원가입</button>
+        
     </form> 
     </div>
 </html>

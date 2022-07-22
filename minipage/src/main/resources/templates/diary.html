@@ -1,5 +1,8 @@
-<html layout:decorate = "~{layout}">
-	<div layout:fragment="diaryContent">
+<!-- 다이어리 입력 페이지 -->
+<html layout:decorate = "~{diary_layout}">
+<div layout:fragment="content" class="container my-3">
+<div th:fragment="diaryContent">
+	<h2 style="text-align: center; margin: 1em 0;">다이어리</h2>
 		<table class="card my-3">
 			<tr class="card-body" style="font-size: 18px">
 				<td class="mainday text-center" style="font-size: 20px">07.22<br>FRI</td>
@@ -11,22 +14,23 @@
 			</tr>
 		</table>
 		
-		<div class="row my-3">
-			<div class="col-6">
-				<a th:href="@{/diary/create}" class="btn btn-secondary">
-					글쓰기
-				</a>
-			</div>
-	
-		<!-- <div class="col-6">
-				<div class="input-group">
-					<input type="text" id="search_kw" class="form_control" th:value="${kw}">
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
-					</div>
-				</div>
-			</div> -->	
-		</div>
+<form th:object="${diaryForm}" method="post">
+         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            
+         <!-- 경고문 -->
+         <div th:replace="form_errors :: formErrorsFragment"></div>
+             
+         <!-- 내용 입력란 -->
+         <div class="mb-3">
+             <label for="content" class="form-label"></label>
+             <textarea th:field=*{content} name="content" class="form-control" rows="10"></textarea>
+         </div>
+         
+         <!-- 등록 버튼 -->
+         <input type="submit" value="등록" class="btn btn-outline-secondary my-2"/>
+         <a th:href="@{/diary/list}" class="btn btn-outline-secondary">취소</a>
+      </form>   
+
 		
 		<div class="card my-3" th:each="diary, loop: ${diaryList}">
 			<div class="card-body">
@@ -49,7 +53,7 @@
 			</div>
 		</div>
 	
-	<script type='text/javascript'>
+	<script type='text/javascript' defer>
 		const delete_elements = document.getElementsByClassName("delete");
 		Array.from(delete_elements).forEach(function(element) {
 		    element.addEventListener('click', function() {
@@ -59,4 +63,6 @@
 		    });
 		});
 	</script>
+</div>
+</div>
 </html>

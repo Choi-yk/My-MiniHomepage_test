@@ -1,11 +1,9 @@
-
-<!-- 다이어리 리스트 페이지 -->
-
+<!-- 메인화면 페이지의 다이어리 부분 -->
 <html layout:decorate="~{diary_layout}">
 <div layout:fragment="content" class="container my-3">
 <div th:fragment="diaryContent">
 
-						<h2 style="text-align: center; margin: 1em 0;">My 다이어리</h2>
+						<h5 style="margin: 1em 0;">달력</h5>
 						
 		<table class="card my-3">
 			<tr class="card-body" style="font-size: 18px">
@@ -17,14 +15,7 @@
 				25 &nbsp;&nbsp;26 27 28 29 <span class="saturday"> 30 </span><span class="sunday"> 31 </span></td>
 			</tr>
 		</table>
-		<!--  -->
-		<div class="row my-3">
-			<div class="col-6">
-				<a th:href="@{/diary/create}" class="btn btn-secondary">
-					글쓰기
-				</a>
-			</div>
-	</div>
+	
 		
 		<div class="card my-3" th:each="diary, loop: ${diaryList}">
 			<div class="card-body">
@@ -45,8 +36,8 @@
                 class="delete btn btn-sm btn-outline-secondary"
                 th:text="삭제"></a>
 			</div>
-			
 		</div>
+	
 	
 	<script type='text/javascript' defer>
 		const delete_elements = document.getElementsByClassName("delete");
@@ -58,7 +49,6 @@
 		    });
 		});
 	</script>
-	
-
+</div>
 </div>
 </html>

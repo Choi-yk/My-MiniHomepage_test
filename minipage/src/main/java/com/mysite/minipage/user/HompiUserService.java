@@ -16,13 +16,13 @@ public class HompiUserService {
 
 	private final HompiUserRepository hompiUserRepository;
 	
-	//ÄÁÆ®·Ñ·¯°¡ ÀÌÂÊÀ¸·Î ³Ñ±è
+	//ì»¨íŠ¸ë¡¤ëŸ¬ê°€ ì´ìª½ìœ¼ë¡œ ë„˜ê¹€
 	public HompiUser create(String username, String email, String password,String profile) {
 		HompiUser user = new HompiUser();
 		user.setUsername(username);
 		user.setEmail(email);
 		user.setProfile(profile);
-		//¾ÏÈ£È­ÇÏ´Â Å¬·¡½º
+		//ì•”í˜¸í™”í•˜ëŠ” í´ë˜ìŠ¤
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		user.setPassword(passwordEncoder.encode(password));
 		this.hompiUserRepository.save(user);
@@ -38,17 +38,7 @@ public class HompiUserService {
 		}
 	}
 
-	////////////////////////////////////////
-	
-//	public HompiUser getId(Integer id) {
-//		Optional<HompiUser> hompiUser = this.hompiUserRepository.findByuserId(id);
-//		if(hompiUser.isPresent()) {
-//			return hompiUser.get();
-//		}else {
-//			throw new DataNotFoundException("hompiUser not found!!!!!!!!!");
-//		}
-//	}
-//
+
 	public HompiUser login(String username, String profile) {
 		Optional<HompiUser> hompiUser = this.hompiUserRepository.findByusername(username);
 		if(hompiUser.isPresent()) {

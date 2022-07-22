@@ -5,6 +5,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,20 +13,20 @@ import lombok.Setter;
 @Getter
 public class HompiUserCreateForm {
 
-	@Size(min=3, max=25)
-	@NotEmpty(message="»ç¿ëÀÚ ¾ÆÀÌµğ´Â ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
+	@Size(min=3, max=15,message="ì•„ì´ë””ëŠ” 3 ~15ë¡œ ì§€ì–´ì£¼ì„¸ìš”.")
+	@NotEmpty(message="ì‚¬ìš©ì ì•„ì´ë””ëŠ” í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
 	private String username;
 	
-	@NotEmpty(message="ºñ¹Ğ¹øÈ£´Â ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
-	private String password1;	//ºñ¹Ğ¹øÈ£
+	@NotEmpty(message="ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
+	private String password1;	//ë¹„ë°€ë²ˆí˜¸
 	
-	@NotEmpty(message="ºñ¹Ğ¹øÈ£ È®ÀÎÀº ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
-	private String password2;	//ºñ¹Ğ¹øÈ£È®ÀÎ
+	@NotEmpty(message="ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì€ í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
+	private String password2;	//ë¹„ë°€ë²ˆí˜¸í™•ì¸
 
-	@NotEmpty(message="ÀÌ¸ŞÀÏÀº ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.")
+	@NotEmpty(message="ì´ë©”ì¼ì€ í•„ìˆ˜ í•­ëª©ì…ë‹ˆë‹¤.")
 	@Email
 	private String email;
 	
-	@Column(columnDefinition = "TEXT")		//°Ô½ÃÆÇ È¨ÆäÀÌÁö¿¡ µî·ÏµÉ ÀÚ±â¼Ò°³
+	@Column(columnDefinition = "TEXT")		//ê²Œì‹œíŒ í™ˆí˜ì´ì§€ì— ë“±ë¡ë  ìê¸°ì†Œê°œ
 	private String profile;
 }

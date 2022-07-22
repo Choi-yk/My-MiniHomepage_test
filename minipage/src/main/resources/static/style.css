@@ -17,6 +17,7 @@ body {
   border-radius: 9px;
   height: 80vh;
   margin: 1em 0;
+  padding:2em;
 }
 .homeWrapper {
   background-color: grey;
@@ -37,7 +38,8 @@ body {
 }
 .LoginSigninBtn {
   width: 13%;
-  margin: 1em 0 1em 85%;
+  margin: 0.5em 0 0.5em 85%;
+  transform: translateY(-3.5em);
 }
 .profileWrap {
   width: 20%;
@@ -58,7 +60,13 @@ body {
   margin: 0 2em 0 1em;
   background-color: white;
   padding: 1em;
+  overflow:overlay;
+ 
 }
+.formLayOutWrap::-webkit-scrollbar {
+  display: none;
+}
+
 
 #nav-tabContent {
   display: inline-block;
@@ -103,25 +111,24 @@ body {
 	
 }
 .btn_position {
-    left: 5vw;
-    /* margin-left: 1em; */
-    position: fixed;
-    top: 75%;
+
+    float:right;
 }
 #profile {
-	height: 23vh;
+	height: 6em;
 }
 .signup_wrap {
-	display: inline-block;
-	width: 45%;
-	margin: 1em;
+	display: inline-grid;
+    width: 45%;
+    margin: 0 1em;
 }
-
+.alert{
+	margin-bottom:0.5em;
+}
 .nav {
 	clear: both;
 	display: inline-flex;
 	flex-wrap: wrap;
-	/* padding-left: 65%; */
 	margin-bottom: 0;
 	list-style: none;
 	flex-direction: column;
@@ -141,3 +148,11 @@ body {
 	display: inline-block;
 	width: 60%;
 }
+/* 게시물의 스크롤바 없애기 기능
+.tab-content::-webkit-scrollbar {
+  display: none;
+}*/
+h1{
+	display:inline-block;
+}
+
