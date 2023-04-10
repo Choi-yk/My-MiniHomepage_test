@@ -42,7 +42,7 @@ public class HompiUserController {
 		return "login_form";
 	}
 	
-//	//////////ÄíÅ°
+//ì¿ í‚¤ìƒì„± ë„ì „..
 	public String login(@Valid @ModelAttribute HompiUserCreateForm hompiuserCreateForm, BindingResult bindingResult, HttpServletResponse response) {
         if (bindingResult.hasErrors()) {
             return "hompiUser/login_form";
@@ -51,13 +51,13 @@ public class HompiUserController {
         HompiUser loginMember =  hompiUserService.login(hompiuserCreateForm.getUsername(), hompiuserCreateForm.getProfile());
 
         if (loginMember == null) {
-            bindingResult.reject("loginFail", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+            bindingResult.reject("loginFail", "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.");
             return "hompiUser/login_form";
         }
 
-        //·Î±×ÀÎ ¼º°ø Ã³¸®
+        //ë¡œê·¸ì¸ ì„±ê³µ ì²˜ë¦¬
 
-        //ÄíÅ°¿¡ ½Ã°£ Á¤º¸¸¦ ÁÖÁö ¾ÊÀ¸¸é ¼¼¼Ç Äí±â(ºê¶ó¿ìÀú Á¾·á½Ã ¸ğµÎ Á¾·á)
+        //ì¿ í‚¤ì— ì‹œê°„ ì •ë³´ë¥¼ ì£¼ì§€ ì•Šìœ¼ë©´ ì„¸ì…˜ ì¿ ê¸°(ë¸Œë¼ìš°ì € ì¢…ë£Œì‹œ ëª¨ë‘ ì¢…ë£Œ)
         Cookie idCookie = new Cookie("username", loginMember.getUsername());
         response.addCookie(idCookie);
         System.out.println(idCookie);
@@ -65,25 +65,12 @@ public class HompiUserController {
 
     }
 
-//	////////////////////ÄíÅ°Á¤º¸ »èÁ¦
-//	@PostMapping("/logout")
-//	public String logout(HttpServletResponse response) {
-//	    expiredCookie(response, "memberId");
-//	    return "redirect:/";
-//	}
-//
-//	private void expiredCookie(HttpServletResponse response, String cookieName) {
-//	    Cookie cookie = new Cookie(cookieName, null);
-//	    cookie.setMaxAge(0);
-//	    response.addCookie(cookie);
-//	    System.out.println(cookie);
-//	}
-//	
+
 	@GetMapping("/hompiUser/index")
 	public String layout() {
 		return "index";
 	}
-	//¿øº»
+	//ì›ë³¸
 	@PostMapping("/hompiUser/signup")
 	public String signup(@Valid HompiUserCreateForm hompiuserCreateForm, BindingResult bindingResult,Principal principal) {
 	
@@ -93,7 +80,7 @@ public class HompiUserController {
 			
 		}
 		if(!hompiuserCreateForm.getPassword1().equals(hompiuserCreateForm.getPassword2())) {
-			bindingResult.rejectValue("password2","passwordIncorrect","2°³ÀÇ ÆĞ½º¿öµå°¡ ºÒÀÏÄ¡ÇÕ´Ï´Ù.");
+			bindingResult.rejectValue("password2","passwordIncorrect","2ê°œì˜ íŒ¨ìŠ¤ì›Œë“œê°€ ë¶ˆì¼ì¹˜í•©ë‹ˆë‹¤.");
 			return "signup_form";
 		}
 		
@@ -103,7 +90,7 @@ public class HompiUserController {
 			
 		}catch(DataIntegrityViolationException e) {
 			e.printStackTrace();
-			bindingResult.reject("signupFailed","ÀÌ¹Ì µî·ÏµÈ »ç¿ëÀÚÀÔ´Ï´Ù.");
+			bindingResult.reject("signupFailed","ì´ë¯¸ ë“±ë¡ëœ ì‚¬ìš©ìì…ë‹ˆë‹¤.");
 			return "signup_form";
 			
 		}catch(Exception e) {
